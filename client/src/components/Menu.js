@@ -29,7 +29,7 @@ componentDidMount() {
        }
 
        submit = (menu_item) => {
-           let { products} = this.state
+           let { menu_items} = this.state
            axios.post('/api/menu_items', { menu_item} )
            .then( res => this.setState({ menu_items: [res.data, ...menu_items], showForm: false}))
        }
