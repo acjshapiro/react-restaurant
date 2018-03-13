@@ -1,5 +1,5 @@
 class Api::MenuItemsController < ApplicationController
- before_action :set_menu_item, only: [:show, :update, :destroy]
+ before_action :set_menu, only: [:show, :update, :destroy]
  
   def index
     render json: Menu.all 
@@ -13,9 +13,9 @@ class Api::MenuItemsController < ApplicationController
     menu = Menu.new(menu_params)
 
     if menu.save
-      render json: menu 
-    else 
-      render json: menu.errors, status: 422 
+      render json: menu
+    else
+      render json: menu.errors, status: 422
     end
   end
 
@@ -32,11 +32,12 @@ class Api::MenuItemsController < ApplicationController
   end
 
   private 
-  def set_menu_item
+  def set_menu
     @menu = Menu.find(params[:id])
   end 
   
   def menu_params
     params.require(:menu).permit(:name, :description, :price)
   end 
+
 end

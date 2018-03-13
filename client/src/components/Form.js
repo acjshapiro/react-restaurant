@@ -4,6 +4,12 @@ class Form extends React.Component {
   defaultValues = { name: '', price: '', description: '' }
   state = {...this.defaultValues}
 
+  componentDidMount() {
+    if (this.props.id)
+      this.setState({...this.props})
+  }
+
+ 
   handleSubmit = (e) => {
     e.preventDefault();
     let menu_item = { ...this.state }

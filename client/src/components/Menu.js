@@ -28,10 +28,9 @@ componentDidMount() {
            return <Form submit={this.submit}/>
        }
 
-       submit = (menu_item) => {
+       submit = (menu) => {
            let { menu_items} = this.state
-           axios.post('/api/menu_items', { menu_item} )
-           .then( res => this.setState({ menu_items: [res.data, ...menu_items], showForm: false}))
+           axios.post('/api/menu_items', { menu} ).then( res => this.setState({ menu_items: [res.data, ...menu_items], showForm: false}))
        }
 
        toggleForm = () => {
